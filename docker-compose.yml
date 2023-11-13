@@ -1,0 +1,16 @@
+services:
+  webserver:
+    container_name: backend
+    build:
+      context: ./flask
+    ports:
+      - "5000:5000"
+
+  ui:
+    container_name: ui
+    build:
+      context: ./streamlit
+    depends_on:
+      - webserver
+    ports:
+      - "80:80"
